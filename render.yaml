@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: geo-measurement-api
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:create_app --factory --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DATABASE_URL
+        value: sqlite:///./geofiles.db
+      - key: MAX_UPLOAD_MB
+        value: 50
+      - key: MAX_UNCOMPRESSED_MB
+        value: 200
+      - key: MAX_FEATURES
+        value: 100000
