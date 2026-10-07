@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+  <Document>
+    <name>Site survey</name>
+    <Placemark id="field-1">
+      <name>North field</name>
+      <ExtendedData><Data name="crop"><value>Paddy</value></Data></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>
+        80.6200,16.5100,0 80.6200,16.5150,0 80.6260,16.5150,0 80.6260,16.5100,0 80.6200,16.5100,0
+      </coordinates></LinearRing></outerBoundaryIs></Polygon>
+    </Placemark>
+    <Placemark id="road-1">
+      <name>Access road</name>
+      <LineString><coordinates>80.6200,16.5060,0 80.6400,16.5060,0 80.6480,16.5120,0</coordinates></LineString>
+    </Placemark>
+    <Placemark id="well-1">
+      <name>Borewell</name>
+      <Point><coordinates>80.6230,16.5120,0</coordinates></Point>
+    </Placemark>
+    <Placemark id="ponds">
+      <name>Ponds</name>
+      <MultiGeometry>
+        <Polygon><outerBoundaryIs><LinearRing><coordinates>80.6300,16.5100 80.6300,16.5110 80.6310,16.5110 80.6300,16.5100</coordinates></LinearRing></outerBoundaryIs></Polygon>
+        <Polygon><outerBoundaryIs><LinearRing><coordinates>80.6320,16.5100 80.6320,16.5110 80.6330,16.5110 80.6320,16.5100</coordinates></LinearRing></outerBoundaryIs></Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="gps-1">
+      <name>Tractor GPS track</name>
+      <gx:Track><when>2026-01-01T10:00:00Z</when><gx:coord>80.62 16.51 0</gx:coord></gx:Track>
+    </Placemark>
+  </Document>
+</kml>
