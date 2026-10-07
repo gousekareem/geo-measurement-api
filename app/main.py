@@ -2,7 +2,10 @@
 import logging
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from sqlalchemy.orm import sessionmaker
+import os
 
 from .api import router
 from .config import Settings
@@ -24,8 +27,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.settings = settings
     app.state.session_factory = sessionmaker(bind=engine, expire_on_commit=False)
 
+    # Mount static files
+    static_dir = os.path.join(os.path.dirname(__file__), "static")
+    if os.path.exists(static_dir):
+        app.mount("/static", StaticFiles(directory=static_dir), name="static")
+
     @app.get("/", tags=["meta"])
     def root():
+        """Serve the landing page"""
+        landing_page = os.path.join(os.path.dirname(__file__), "static", "index.html")
+        if os.path.exists(landing_page):
+            return FileResponse(landing_page, media_type="text/html")
         return {
             "message": "Geo Measurement API is running",
             "status": "ok",
