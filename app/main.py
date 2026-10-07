@@ -24,6 +24,16 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.settings = settings
     app.state.session_factory = sessionmaker(bind=engine, expire_on_commit=False)
 
+    @app.get("/", tags=["meta"])
+    def root():
+        return {
+            "message": "Geo Measurement API is running",
+            "status": "ok",
+            "health": "/health",
+            "docs": "/docs",
+            "api": "/api/files/",
+        }
+
     @app.get("/health", tags=["meta"])
     def health():
         return {"status": "ok"}
